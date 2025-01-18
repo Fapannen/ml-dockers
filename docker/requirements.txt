@@ -1,0 +1,19 @@
+numpy
+albumentations
+torch
+torchvision
+torchaudio
+imgaug
+scikit-learn
+opencv-python
+opencv-python-headless
+pandas
+tqdm
+pqdm
+scikit-image
+requests
+matplotlib
+ipython
+hydra-core
+huggingface-hub
+--extra-index-url https://download.pytorch.org/whl/cu124

@@ -1,0 +1,48 @@
+ARG FBUILD_VERSION
+ARG FBUILD_SYSTEM
+ARG FBUILD_SYSTEM_VERSION
+
+FROM nvidia/cuda:${FBUILD_VERSION}-cudnn-devel-${FBUILD_SYSTEM}${FBUILD_SYSTEM_VERSION}
+
+RUN apt-get update -y \ 
+	&& DEBIAN_FRONTEND=noninteractive apt-get install -y wget \
+		libffi-dev  \
+		gcc \
+		build-essential \
+		curl \
+		tcl-dev \
+		uuid-dev \
+		liblzma-dev \
+		libssl-dev \
+		libsqlite3-dev
+
+ARG FBUILD_USERNAME
+ARG FBUILD_PYTHON_MAJOR_VERSION
+ARG FBUILD_PYTHON_MINOR_VERSION
+ARG FBUILD_PYTHON_REV_VERSION
+ARG FBUILD_PYTHON_VERSION=${FBUILD_PYTHON_MAJOR_VERSION}.${FBUILD_PYTHON_MINOR_VERSION}.${FBUILD_PYTHON_REV_VERSION}
+
+RUN mkdir /home/${FBUILD_USERNAME}
+
+RUN mkdir /opt/python${FBUILD_PYTHON_VERSION}
+
+RUN wget https://www.python.org/ftp/python/${FBUILD_PYTHON_VERSION}/Python-${FBUILD_PYTHON_VERSION}.tgz
+RUN tar -zxvf Python-${FBUILD_PYTHON_VERSION}.tgz
+RUN cd Python-${FBUILD_PYTHON_VERSION} \
+	&& ./configure --prefix=/usr --with-ensurepip=install \
+	&& make \
+	&& make install
+
+# Delete the python source code and temp files
+RUN rm Python-${FBUILD_PYTHON_VERSION}.tgz
+RUN rm -r Python-${FBUILD_PYTHON_VERSION}/
+
+# Now link it so that $python works
+RUN ln -s /usr/bin/python${FBUILD_PYTHON_MAJOR_VERSION}.${FBUILD_PYTHON_MINOR_VERSION} /usr/bin/python
+RUN ln -s /usr/bin/pip3 /usr/bin/pip
+
+RUN python -m pip install --upgrade pip
+
+# Now prepare the python libraries
+COPY requirements.txt /opt/base_python_requirements.txt
+RUN pip install -r /opt/base_python_requirements.txt
