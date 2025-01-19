@@ -15,7 +15,8 @@ edit `requirements.txt` anyhow you want.
 # Workflow
 
 - Setup the environment with `./setup_environment.sh`
-	- If this is your first setup, either leave `docker/dockerenv.sh` as is, or delete it. 	
+	- If this is your first setup, either leave `docker/dockerenv.sh` as is, or delete it. 
+	  If you are leaving it as is, you have to install NVIDIA Container Toolkit manually.
 - `cd docker`
 - `./build.sh`
 - `./run.sh` - Enjoy the image.
