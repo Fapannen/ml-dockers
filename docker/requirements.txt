@@ -3,6 +3,8 @@ albumentations
 torch
 torchvision
 torchaudio
+timm
+lightning
 imgaug
 scikit-learn
 opencv-python
@@ -15,5 +17,9 @@ requests
 matplotlib
 ipython
 hydra-core
+# For Stable Diffusion
 huggingface-hub
+transformers
+diffusers
+accelerate
 --extra-index-url https://download.pytorch.org/whl/cu124

@@ -8,13 +8,15 @@ RUN apt-get update -y \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y wget \
 		libffi-dev  \
 		gcc \
+		git \
 		build-essential \
 		curl \
 		tcl-dev \
 		uuid-dev \
 		liblzma-dev \
 		libssl-dev \
-		libsqlite3-dev
+		libsqlite3-dev \
+		libbz2-dev
 
 ARG FBUILD_USERNAME
 ARG FBUILD_PYTHON_MAJOR_VERSION
@@ -46,3 +48,6 @@ RUN python -m pip install --upgrade pip
 # Now prepare the python libraries
 COPY requirements.txt /opt/base_python_requirements.txt
 RUN pip install -r /opt/base_python_requirements.txt
+
+# Setup Huggingface cache
+ENV HF_HOME=/home/${FBUILD_USERNAME}/huggingface
