@@ -14,7 +14,8 @@ RUN apt-get update -y \
 		uuid-dev \
 		liblzma-dev \
 		libssl-dev \
-		libsqlite3-dev
+		libsqlite3-dev \
+		libbz2-dev
 
 ARG FBUILD_USERNAME
 ARG FBUILD_PYTHON_MAJOR_VERSION

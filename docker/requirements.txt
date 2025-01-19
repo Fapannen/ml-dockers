@@ -3,6 +3,7 @@ albumentations
 torch
 torchvision
 torchaudio
+timm
 lightning
 imgaug
 scikit-learn
