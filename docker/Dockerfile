@@ -8,6 +8,7 @@ RUN apt-get update -y \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y wget \
 		libffi-dev  \
 		gcc \
+		git \
 		build-essential \
 		curl \
 		tcl-dev \

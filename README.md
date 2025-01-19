@@ -16,6 +16,6 @@ PyTorch, OpenCV, Scikit-learn and other ML targeted libraries.
 - `cd docker`
 - `./build.sh` (Then go for a stroll around the city, takes a while)
 	- The build can successfully finish, but fail to return cli control, use CTRL+C after a while
-- `./run.sh` - Enjoy the fully empowered image
+- `./run.sh` - Enjoy the fully empowered image. Consider mounting a volume from host to enable interaction.
 
 
