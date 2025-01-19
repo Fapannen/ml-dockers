@@ -46,3 +46,6 @@ RUN python -m pip install --upgrade pip
 # Now prepare the python libraries
 COPY requirements.txt /opt/base_python_requirements.txt
 RUN pip install -r /opt/base_python_requirements.txt
+
+# Setup Huggingface cache
+ENV HF_HOME=/home/${FBUILD_USERNAME}/huggingface

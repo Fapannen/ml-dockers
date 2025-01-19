@@ -3,6 +3,7 @@ albumentations
 torch
 torchvision
 torchaudio
+lightning
 imgaug
 scikit-learn
 opencv-python
@@ -16,4 +17,6 @@ matplotlib
 ipython
 hydra-core
 huggingface-hub
+transformers
+diffusers
 --extra-index-url https://download.pytorch.org/whl/cu124
