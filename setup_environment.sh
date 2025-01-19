@@ -30,6 +30,7 @@ config_variable FBUILD_PYTHON_MAJOR_VERSION 3
 config_variable FBUILD_PYTHON_MINOR_VERSION 10
 config_variable FBUILD_PYTHON_REV_VERSION 0
 config_variable FBUILD_DOCKER_IMAGE_TAG base-ml-gpu
+config_variable FBUILD_DOCKER_MOUNT_FOLDER /home
 
 sudo apt-get update
 
