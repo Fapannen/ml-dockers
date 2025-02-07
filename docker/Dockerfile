@@ -8,6 +8,7 @@ RUN apt-get update -y \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y wget \
 		libffi-dev  \
 		gcc \
+		g++ \
 		git \
 		build-essential \
 		curl \
@@ -16,7 +17,10 @@ RUN apt-get update -y \
 		liblzma-dev \
 		libssl-dev \
 		libsqlite3-dev \
-		libbz2-dev
+		libbz2-dev \
+		ffmpeg \
+		libsm6 \
+		libxext6 \
 
 ARG FBUILD_USERNAME
 ARG FBUILD_PYTHON_MAJOR_VERSION
